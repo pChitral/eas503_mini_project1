@@ -47,33 +47,29 @@
         },
         {
             "name": "test_determine_data_type_of_list_1 (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 3,
             "max_score": 3,
-            "output": "Test Failed: maximum recursion depth exceeded\n",
             "visibility": "visible",
             "number": "2.1"
         },
         {
             "name": "test_determine_data_type_of_list_2 (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 3,
             "max_score": 3,
-            "output": "Test Failed: maximum recursion depth exceeded\n",
             "visibility": "visible",
             "number": "2.2"
         },
         {
             "name": "test_determine_data_type_of_list_3 (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 3,
             "max_score": 3,
-            "output": "Test Failed: maximum recursion depth exceeded\n",
             "visibility": "visible",
             "number": "2.3"
         },
         {
             "name": "test_determine_data_type_of_list_4 (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 3,
             "max_score": 3,
-            "output": "Test Failed: maximum recursion depth exceeded\n",
             "visibility": "visible",
             "number": "2.4"
         },
@@ -176,6 +172,6 @@
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "0.01",
-    "score": 9.0
+    "execution_time": "0.00",
+    "score": 21.0
 }

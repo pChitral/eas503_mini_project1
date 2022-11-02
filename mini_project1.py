@@ -37,9 +37,9 @@ def determine_data_type_of_list(values):
     # BEGIN SOLUTION
     list_data_type = []
     for value in values:
-        if determine_data_type_of_list(value) in (str):
+        if determine_data_type(value) == (str):
             return str
-        if determine_data_type_of_list(value) not in list_data_type:
+        if determine_data_type(value) not in list_data_type:
             list_data_type.append(determine_data_type(value))
     if float in list_data_type:
         return float
