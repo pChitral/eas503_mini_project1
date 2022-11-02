@@ -31,7 +31,7 @@ def determine_data_type_of_list(values):
     Some lists might be a mixture of ints, floats, and strings, 
     in which case the data type of the list will be a string.
     NOTE: This function should use "determine_data_type" function you coded previously
-    
+
 
     """
     # BEGIN SOLUTION
