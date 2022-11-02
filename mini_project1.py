@@ -3,14 +3,14 @@ def determine_data_type(value):
     The function takes a string input and determines its data type to be either a float, int, or string. 
     """
     # BEGIN SOLUTION
-    data_type = None 
+    data_type = None
     try:
         int(value)
         data_type = int
         return data_type
-            
+
     except:
-        try: 
+        try:
             float(value)
             data_type = float
             return data_type
@@ -31,10 +31,21 @@ def determine_data_type_of_list(values):
     Some lists might be a mixture of ints, floats, and strings, 
     in which case the data type of the list will be a string.
     NOTE: This function should use "determine_data_type" function you coded previously
+    
 
     """
     # BEGIN SOLUTION
-    pass
+    list_data_type = []
+    for value in values:
+        if determine_data_type_of_list(value) in (str):
+            return str
+        if determine_data_type_of_list(value) not in list_data_type:
+            list_data_type.append(determine_data_type(value))
+    if float in list_data_type:
+        return float
+    if int in list_data_type:
+        return int
+
     # END SOLUTION
 
 
@@ -384,14 +395,14 @@ def pull_basic_and_predictor_fields(filename):
     pass
     # END SOLUTION
 
+
 def pull_basic_and_predictor_fields_gzip(filename):
     # BEGIN SOLUTION
-    pass  
+    pass
     # END SOLUTION
+
 
 def return_all_non_zero_sum_predictor_values():
     # BEGIN SOLUTION
     pass
     # END SOLUTION
-              
-
