@@ -3,7 +3,19 @@ def determine_data_type(value):
     The function takes a string input and determines its data type to be either a float, int, or string. 
     """
     # BEGIN SOLUTION
-    pass
+    data_type = None 
+    try:
+        int(value)
+        data_type = int
+        return data_type
+            
+    except:
+        try: 
+            float(value)
+            data_type = float
+            return data_type
+        except:
+            return str
     # END SOLUTION
 
 

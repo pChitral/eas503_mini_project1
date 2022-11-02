@@ -1,0 +1,181 @@
+{
+    "tests": [
+        {
+            "name": "test_create_dict_from_line (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 10,
+            "output": "Test Failed: {'CHROM': '4', 'POS': '123416186', 'ID': [5306 chars]7'}}} != None\n",
+            "visibility": "visible",
+            "number": "4"
+        },
+        {
+            "name": "test_create_dictionary_of_info_field_value (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 10,
+            "output": "Test Failed: {'AC': ['1', '6'], 'AF': ['0.167', '1'], [1445 chars]28']} != None\n",
+            "visibility": "visible",
+            "number": "7"
+        },
+        {
+            "name": "test_determine_data_type_1 (test_mini_project1.TestMiniProject1)",
+            "score": 3,
+            "max_score": 3,
+            "visibility": "visible",
+            "number": "1.1"
+        },
+        {
+            "name": "test_determine_data_type_2 (test_mini_project1.TestMiniProject1)",
+            "score": 3,
+            "max_score": 3,
+            "visibility": "visible",
+            "number": "1.2"
+        },
+        {
+            "name": "test_determine_data_type_3 (test_mini_project1.TestMiniProject1)",
+            "score": 3,
+            "max_score": 3,
+            "visibility": "visible",
+            "number": "1.3"
+        },
+        {
+            "name": "test_determine_data_type_of_info_fields (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 10,
+            "output": "Test Failed: {'key1': <class 'int'>, 'key2': <class 'f[50 chars]tr'>} != None\n",
+            "visibility": "visible",
+            "number": "8"
+        },
+        {
+            "name": "test_determine_data_type_of_list_1 (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 3,
+            "output": "Test Failed: <class 'int'> != None\n",
+            "visibility": "visible",
+            "number": "2.1"
+        },
+        {
+            "name": "test_determine_data_type_of_list_2 (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 3,
+            "output": "Test Failed: <class 'float'> != None\n",
+            "visibility": "visible",
+            "number": "2.2"
+        },
+        {
+            "name": "test_determine_data_type_of_list_3 (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 3,
+            "output": "Test Failed: <class 'float'> != None\n",
+            "visibility": "visible",
+            "number": "2.3"
+        },
+        {
+            "name": "test_determine_data_type_of_list_4 (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 3,
+            "output": "Test Failed: <class 'str'> != None\n",
+            "visibility": "visible",
+            "number": "2.4"
+        },
+        {
+            "name": "test_extract_info_field (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 6,
+            "output": "Test Failed: 'NoneType' object is not subscriptable\n",
+            "visibility": "visible",
+            "number": "6"
+        },
+        {
+            "name": "test_find_variant_1 (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 20,
+            "output": "Test Failed: [{'ALT': 'G', 'CHROM': '13', 'FILTER': 'P[2184 chars]'}}}] != None\n",
+            "visibility": "visible",
+            "number": "10.1"
+        },
+        {
+            "name": "test_find_variant_2 (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 20,
+            "output": "Test Failed: [{'ALT': 'C', 'CHROM': '18', 'FILTER': 'P[2205 chars]'}}}] != None\n",
+            "visibility": "visible",
+            "number": "10.2"
+        },
+        {
+            "name": "test_find_variant_3 (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 20,
+            "output": "Test Failed: [{'ALT': 'C', 'CHROM': '10', 'FILTER': 'P[1894 chars]'}}}] != None\n",
+            "visibility": "visible",
+            "number": "10.3"
+        },
+        {
+            "name": "test_format_sample_fields_1 (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 6,
+            "output": "Test Failed: 'NoneType' object is not subscriptable\n",
+            "visibility": "visible",
+            "number": "3.1"
+        },
+        {
+            "name": "test_format_sample_fields_2 (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 6,
+            "output": "Test Failed: 'NoneType' object is not subscriptable\n",
+            "visibility": "visible",
+            "number": "3.2"
+        },
+        {
+            "name": "test_format_sample_fields_3 (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 6,
+            "output": "Test Failed: 'NoneType' object is not subscriptable\n",
+            "visibility": "visible",
+            "number": "3.3"
+        },
+        {
+            "name": "test_load_data_from_json (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 10,
+            "output": "Test Failed: {'key1': ['1', '2', '3'], 'key2': ['1.1',[76 chars].3']} != None\n",
+            "visibility": "visible",
+            "number": "9"
+        },
+        {
+            "name": "test_pull_basic_and_predictor_fields (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 20,
+            "output": "Test Failed: [{'FATHMM_pred': 'T', 'LRT_pred': 'D', 'M[900 chars]'T'}] != None\n",
+            "visibility": "visible",
+            "number": "11.1"
+        },
+        {
+            "name": "test_pull_basic_and_predictor_fields_gzip (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 40,
+            "output": "Test Failed: [Errno 2] No such file or directory: 'mini_project1_gzip.json'\n",
+            "visibility": "visible",
+            "number": "12.1"
+        },
+        {
+            "name": "test_read_vcf_file (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 10,
+            "output": "Test Failed: [{'CHROM': '4', 'POS': '123416186', 'ID':[10616 chars]'}}}] != None\n",
+            "visibility": "visible",
+            "number": "5"
+        },
+        {
+            "name": "test_return_all_non_zero_sum_predictor_values (test_mini_project1.TestMiniProject1)",
+            "score": 0.0,
+            "max_score": 20,
+            "output": "Test Failed: [Errno 2] No such file or directory: 'sum_predictor_values_gt_zero.json'\n",
+            "visibility": "visible",
+            "number": "13.1"
+        }
+    ],
+    "leaderboard": [],
+    "visibility": "visible",
+    "execution_time": "0.00",
+    "score": 9.0
+}
