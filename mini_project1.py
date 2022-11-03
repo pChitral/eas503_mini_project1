@@ -174,7 +174,7 @@ def format_sample_fields(format_field, sample_field):
 
 
 def create_dict_from_line(header, line):
-    import ipdb 
+    import ipdb
     """
     Given the header and a single line, transform them into dictionary as described above. 
     Header and line input are provided in this cell. 
@@ -254,11 +254,6 @@ def create_dict_from_line(header, line):
                       'PL': '0,51,1827'}}}
     """
     # BEGIN SOLUTION
-    # format_field = line
-    # sample_field = header
-    # def format_sample_fields(format_field, sample_field):
-    # def create_dict_from_line(header, line):
-
 
     temp_dict = {}
     list_of_lines = line.split("\t")
@@ -268,21 +263,19 @@ def create_dict_from_line(header, line):
             temp_dict[key] = list_of_lines[i]
 
     temp_dict_keys = list(temp_dict.keys())
-    
+
     Dict_of_dict_of_everything_after_format = {}
-    for  i in range(9, len(list_of_lines)):
-        Dict_of_dict_of_everything_after_format[temp_dict_keys[i]] = list_of_lines[i]    
-    
+    for i in range(9, len(list_of_lines)):
+        Dict_of_dict_of_everything_after_format[temp_dict_keys[i]
+                                                ] = list_of_lines[i]
+
     final_ans_dict = {}
     for i in range(8):
         final_ans_dict[temp_dict_keys[i]] = list_of_lines[i]
         if i == 7:
-            final_ans_dict["SAMPLE"] = format_sample_fields(list_of_lines[i+1] , Dict_of_dict_of_everything_after_format)
+            final_ans_dict["SAMPLE"] = format_sample_fields(
+                list_of_lines[i+1], Dict_of_dict_of_everything_after_format)
 
-    # ipdb.set_trace()
-    
-    # Then drop the unnecessary key value pairs from d
-    # 
     # ipdb.set_trace()
     return final_ans_dict
     # END SOLUTION
