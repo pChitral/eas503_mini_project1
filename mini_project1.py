@@ -160,7 +160,7 @@ def format_sample_fields(format_field, sample_field):
     # BEGIN SOLUTION
     output = {}
 
-    dict_keys = sample_field.keys() 
+    dict_keys = sample_field.keys()
     inner_keys = format_field.split(":")
 
     for key in dict_keys:
