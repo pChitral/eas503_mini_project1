@@ -4,7 +4,7 @@
             "name": "test_create_dict_from_line (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 10,
-            "output": "CHROM\nTest Failed: {'CHR[13 chars]S': '123416186', 'ID': '.', 'REF': 'A', 'ALT':[5283 chars]7'}}} != {'CHR[13 chars]S': '\\t', 'ID': '1', 'REF': '2', 'ALT': '3', '[221 chars] '.'}\nDiff is 7174 characters long. Set self.maxDiff to None to see it.\n",
+            "output": "Test Failed: {'CHROM': '4', 'POS': '123416186', 'ID': '.', 'REF':[5295 chars]7'}}} != {'CHROM': '7', 'POS': '7', 'ID': '7', 'REF': '7', 'A[228 chars] '7'}\nDiff is 7218 characters long. Set self.maxDiff to None to see it.\n",
             "visibility": "visible",
             "number": "4"
         },

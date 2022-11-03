@@ -257,27 +257,19 @@ def create_dict_from_line(header, line):
     # sample_field = header
     # def format_sample_fields(format_field, sample_field):
     # def create_dict_from_line(header, line):
-    temp_dict = {}
-    for maal in header:
-        print( maal)
-        break
-        return maal
-    for i in range(len(header)):
-        if header[i] == "SAMPLE":
-            temp_dict[header[i]] = format_sample_fields(line[i], header[i])
-        temp_dict[header[i]] = line[i]
-    return temp_dict
 
+    list_of_dicts = []
+    temp_dict = {}
 
     for key in header:
-        temp_dict = {}
         for i in range(len(line)):
-            if key == "SAMPLE":
+            if key == 'SAMPLE': # This part isn't executing because there isn't any item called SAMPLE in our test case
                 temp_dict[key] = format_sample_fields(line[i], key)
-            temp_dict[key] = line[i]
-        final_answer.append(temp_dict)
+            else:
+                temp_dict[key] = line[i]
 
-    return final_answer
+
+    return temp_dict
     # END SOLUTION
 
 
