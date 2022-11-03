@@ -4,7 +4,7 @@
             "name": "test_create_dict_from_line (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 10,
-            "output": "Test Failed: {'CHROM': '4', 'POS': '123416186', 'ID': [5306 chars]7'}}} != None\n",
+            "output": "Test Failed: 'list' object has no attribute 'keys'\n",
             "visibility": "visible",
             "number": "4"
         },
