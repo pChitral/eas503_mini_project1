@@ -2,9 +2,8 @@
     "tests": [
         {
             "name": "test_create_dict_from_line (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 10,
             "max_score": 10,
-            "output": "Test Failed: {'CHROM': '4', 'POS': '123416186', 'ID': '.', 'REF':[5295 chars]7'}}} != {'CHROM': '7', 'POS': '7', 'ID': '7', 'REF': '7', 'A[228 chars] '7'}\nDiff is 7218 characters long. Set self.maxDiff to None to see it.\n",
             "visibility": "visible",
             "number": "4"
         },
@@ -169,6 +168,6 @@
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "0.01",
-    "score": 39.0
+    "execution_time": "0.36",
+    "score": 49.0
 }

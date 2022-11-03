@@ -258,21 +258,33 @@ def create_dict_from_line(header, line):
     # sample_field = header
     # def format_sample_fields(format_field, sample_field):
     # def create_dict_from_line(header, line):
-    print(header)
-    print(line)
-    # ipdb.set_trace()
-    list_of_dicts = []
+
+
     temp_dict = {}
+    list_of_lines = line.split("\t")
 
     for key in header:
-        for i in range(len(line)):
-            temp_dict[key] = line[i]
+        for i in range(len(list_of_lines)):
+            temp_dict[key] = list_of_lines[i]
+
+    temp_dict_keys = list(temp_dict.keys())
+    
     Dict_of_dict_of_everything_after_format = {}
-    temp_dict["SAMPLE"] = format_sample_fields(temp_dict["FORMAT"], Dict_of_dict_of_everything_after_format)
+    for  i in range(9, len(list_of_lines)):
+        Dict_of_dict_of_everything_after_format[temp_dict_keys[i]] = list_of_lines[i]    
+    
+    final_ans_dict = {}
+    for i in range(8):
+        final_ans_dict[temp_dict_keys[i]] = list_of_lines[i]
+        if i == 7:
+            final_ans_dict["SAMPLE"] = format_sample_fields(list_of_lines[i+1] , Dict_of_dict_of_everything_after_format)
+
+    # ipdb.set_trace()
+    
     # Then drop the unnecessary key value pairs from d
     # 
-
-    return temp_dict
+    # ipdb.set_trace()
+    return final_ans_dict
     # END SOLUTION
 
 
