@@ -174,6 +174,7 @@ def format_sample_fields(format_field, sample_field):
 
 
 def create_dict_from_line(header, line):
+    import ipdb 
     """
     Given the header and a single line, transform them into dictionary as described above. 
     Header and line input are provided in this cell. 
@@ -257,17 +258,19 @@ def create_dict_from_line(header, line):
     # sample_field = header
     # def format_sample_fields(format_field, sample_field):
     # def create_dict_from_line(header, line):
-
+    print(header)
+    print(line)
+    # ipdb.set_trace()
     list_of_dicts = []
     temp_dict = {}
 
     for key in header:
         for i in range(len(line)):
-            if key == 'SAMPLE': # This part isn't executing because there isn't any item called SAMPLE in our test case
-                temp_dict[key] = format_sample_fields(line[i], key)
-            else:
-                temp_dict[key] = line[i]
-
+            temp_dict[key] = line[i]
+    Dict_of_dict_of_everything_after_format = {}
+    temp_dict["SAMPLE"] = format_sample_fields(temp_dict["FORMAT"], Dict_of_dict_of_everything_after_format)
+    # Then drop the unnecessary key value pairs from d
+    # 
 
     return temp_dict
     # END SOLUTION
