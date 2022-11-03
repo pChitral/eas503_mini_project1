@@ -172,9 +172,6 @@ def format_sample_fields(format_field, sample_field):
     return output
     # END SOLUTION
 
-# format_field = line
-# sample_field = header
-
 
 def create_dict_from_line(header, line):
     """
@@ -256,13 +253,21 @@ def create_dict_from_line(header, line):
                       'PL': '0,51,1827'}}}
     """
     # BEGIN SOLUTION
-    output = {}
+    # format_field = line
+    # sample_field = header
+    # def format_sample_fields(format_field, sample_field):
+    # def create_dict_from_line(header, line):
+
+    final_answer = []
     for key in header:
+        temp_dict = {}
         for i in range(len(line)):
-            output[key] = format_sample_fields(line, header)
+            if key == "SAMPLE":
+                temp_dict[key] = format_sample_fields(line[i], key)
+            temp_dict[key] = line[i]
+        final_answer.append(temp_dict)
 
-
-    return output
+    return final_answer
     # END SOLUTION
 
 
