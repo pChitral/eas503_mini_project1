@@ -559,15 +559,18 @@ class TestMiniProject1(unittest.TestCase):
         info_field = self.mini_project1.extract_info_field(data)
         expected_result = {'AC': ['1', '6'], 'AF': ['0.167', '1'], 'AN': ['6'], 'BaseQRankSum': ['-2.542'], 'ClippingRankSum': ['0'], 'DP': ['180', '185'], 'ExcessHet': ['3.0103'], 'FS': ['0'], 'MLEAC': ['1', '6'], 'MLEAF': ['0.167', '1'], 'MQ': ['52.77', '59.95'], 'MQRankSum': ['-4.631'], 'QD': ['0.39', '27.3'], 'ReadPosRankSum': ['1.45'], 'SOR': ['0.758', '1.042'], 'VQSLOD': ['-8.209', '4.51'], 'culprit': ['MQ', 'QD'], 'ANNOVAR_DATE': ['2018-04-16'], 'Func.refGene': ['intergenic'], 'Gene.refGene': ['IL2,IL21', 'LIN7A,ACSS3'], 'GeneDetail.refGene': ['dist=38536,dist=117597', 'dist=112857,dist=27258'], 'Func.ensGene': ['intergenic', 'intronic'], 'Gene.ensGene': ['ENSG00000109471,ENSG00000138684', 'ENSG00000111058'], 'GeneDetail.ensGene': [
             'dist=38306,dist=117597'], 'cytoBand': ['4q27', '12q21.31'], 'CADD13_RawScore': ['0.015973', '-0.101662'], 'CADD13_PHRED': ['2.741', '1.718'], 'Eigen': ['-0.3239', '-0.4730'], 'gnomAD_genome_ALL': ['0.0003', '0.9988'], 'gnomAD_genome_AFR': ['0.0001', '0.9961'], 'gnomAD_genome_AMR': ['0', '1'], 'gnomAD_genome_ASJ': ['0', '1'], 'gnomAD_genome_EAS': ['0.0007', '1'], 'gnomAD_genome_FIN': ['0.0009', '1'], 'gnomAD_genome_NFE': ['0.0002', '0.9998'], 'gnomAD_genome_OTH': ['0.0011', '1'], '1000g2015aug_all': ['0.9998'], '1000g2015aug_afr': ['0.9992'], '1000g2015aug_amr': ['1'], '1000g2015aug_eur': ['1'], '1000g2015aug_sas': ['1'], 'snp138NonFlagged': ['rs10746177'], 'avsnp150': ['rs10746177'], 'Kaviar_AF': ['0.953358'], 'Kaviar_AC': ['24814'], 'Kaviar_AN': ['26028']}
-        value = self.mini_project1.create_dictionary_of_info_field_values(info_field)
+        value = self.mini_project1.create_dictionary_of_info_field_values(
+            info_field)
         self.assertEqual(expected_result, value)
 
     @weight(10)
     @visibility('visible')
     @number("8")
     def test_determine_data_type_of_info_fields(self):
-        data = {'key1': ['1', '2', '3'], 'key2': ['1.1', '2.2', '3.3'], 'key3': ['1.1', '2', '3.3'], 'key4': ['1.1', '234String', '3.3']}
-        expected_result = {'key1': int, 'key2': float, 'key3': float, 'key4': str}
+        data = {'key1': ['1', '2', '3'], 'key2': ['1.1', '2.2', '3.3'], 'key3': [
+            '1.1', '2', '3.3'], 'key4': ['1.1', '234String', '3.3']}
+        expected_result = {'key1': int,
+                           'key2': float, 'key3': float, 'key4': str}
         value = self.mini_project1.determine_data_type_of_info_fields(data)
         self.assertEqual(expected_result, value)
 
@@ -575,7 +578,8 @@ class TestMiniProject1(unittest.TestCase):
     @visibility('visible')
     @number("9")
     def test_load_data_from_json(self):
-        expected_result = {'key1': ['1', '2', '3'], 'key2': ['1.1', '2.2', '3.3'], 'key3': ['1.1', '2', '3.3'], 'key4': ['1.1', '234String', '3.3']}
+        expected_result = {'key1': ['1', '2', '3'], 'key2': ['1.1', '2.2', '3.3'], 'key3': [
+            '1.1', '2', '3.3'], 'key4': ['1.1', '234String', '3.3']}
         self.mini_project1.save_data_as_json(expected_result, 'test_save.json')
         value = self.mini_project1.load_data_from_json('test_save.json')
         self.assertEqual(expected_result, value)
@@ -586,16 +590,22 @@ class TestMiniProject1(unittest.TestCase):
     def test_find_variant_1(self):
         filename = 'mini_project1_data.vcf'
         data = self.mini_project1.read_vcf_file(filename)  # read vcf file
-        info_field_data = self.mini_project1.extract_info_field(data)  # extract all the info fields
-        info_field_list = self.mini_project1.create_dictionary_of_info_field_values(info_field_data)  # create dictionary from info fields
-        info_field_data_type = self.mini_project1.determine_data_type_of_info_fields(info_field_list)  # Determine data type of each info field
-        data = self.mini_project1.format_data(data, info_field_data_type)  # format the data variable -- from data = read_vcf_file(filename)
-        self.mini_project1.save_data_as_json(data, 'mini_project1_data.json')  # save the formatted data
+        info_field_data = self.mini_project1.extract_info_field(
+            data)  # extract all the info fields
+        info_field_list = self.mini_project1.create_dictionary_of_info_field_values(
+            info_field_data)  # create dictionary from info fields
+        info_field_data_type = self.mini_project1.determine_data_type_of_info_fields(
+            info_field_list)  # Determine data type of each info field
+        # format the data variable -- from data = read_vcf_file(filename)
+        data = self.mini_project1.format_data(data, info_field_data_type)
+        self.mini_project1.save_data_as_json(
+            data, 'mini_project1_data.json')  # save the formatted data
 
         # Now I will fetch variants using your find_variant function
         # and check that they match my results
 
-        value = self.mini_project1.find_variant("13", "T", "G", 56292303, 'mini_project1_data.json')
+        value = self.mini_project1.find_variant(
+            "13", "T", "G", 56292303, 'mini_project1_data.json')
         expected_result = [{'ALT': 'G', 'CHROM': '13', 'FILTER': 'PASS', 'ID': 'rs4421887', 'INFO': {'1000g2015aug_afr': 0.8313, '1000g2015aug_all': 0.952676, '1000g2015aug_amr': 0.9841, '1000g2015aug_eur': 1.0, '1000g2015aug_sas': 0.9969, 'AC': 6, 'AF': 1.0, 'AN': 6, 'ANNOVAR_DATE': '2018-04-16', 'BaseQRankSum': 1.77, 'CADD13_PHRED': 3.712, 'CADD13_RawScore': 0.109684, 'ClippingRankSum': 0, 'DP': 176, 'Eigen': -0.7945, 'ExcessHet': 3.0103, 'FS': 0.0, 'Func.ensGene': 'intergenic', 'Func.refGene': 'intergenic', 'Gene.ensGene': 'ENSG00000264387,ENSG00000228611', 'Gene.refGene': 'MIR5007,PRR20D', 'GeneDetail.ensGene': 'dist=543620,dist=281031', 'GeneDetail.refGene': 'dist=543620,dist=1422749', 'Kaviar_AC': 3, 'Kaviar_AF': 0.0001153, 'Kaviar_AN': 26028, 'MLEAC': 6, 'MLEAF': 1.0, 'MQ': 60.0, 'MQRankSum': 0.0, 'QD': 28.95, 'ReadPosRankSum': -0.338, 'SOR': 0.257, 'VQSLOD': 22.53, 'avsnp150': 'rs4421887', 'culprit': 'MQ', 'cytoBand': '13q21.1', 'gnomAD_genome_AFR': 0.8475, 'gnomAD_genome_ALL': 0.9546, 'gnomAD_genome_AMR': 0.9843, 'gnomAD_genome_ASJ': 0.9834, 'gnomAD_genome_EAS': 1.0, 'gnomAD_genome_FIN': 0.9951,
                                                                                                      'gnomAD_genome_NFE': 0.9987, 'gnomAD_genome_OTH': 0.9887, 'snp138NonFlagged': 'rs4421887'}, 'POS': 56292303, 'QUAL': 5037.69, 'REF': 'T', 'SAMPLE': {'XG102': {'AD': '0,62', 'DP': '62', 'GQ': '99', 'GT': '1/1', 'PL': '1796,185,0'}, 'XG103': {'AD': '0,41', 'DP': '41', 'GQ': '99', 'GT': '1/1', 'PL': '1218,122,0'}, 'XG104': {'AD': '1,70', 'DP': '71', 'GQ': '99', 'GT': '1/1', 'PL': '2037,202,0'}, 'XG202': {'AD': '0,62', 'DP': '62', 'GQ': '99', 'GT': '1/1', 'PL': '1796,185,0'}, 'XG203': {'AD': '0,41', 'DP': '41', 'GQ': '99', 'GT': '1/1', 'PL': '1218,122,0'}, 'XG204': {'AD': '1,70', 'DP': '71', 'GQ': '99', 'GT': '1/1', 'PL': '2037,202,0'}, 'XG302': {'AD': '0,62', 'DP': '62', 'GQ': '99', 'GT': '1/1', 'PL': '1796,185,0'}, 'XG303': {'AD': '0,41', 'DP': '41', 'GQ': '99', 'GT': '1/1', 'PL': '1218,122,0'}, 'XG304': {'AD': '1,70', 'DP': '71', 'GQ': '99', 'GT': '1/1', 'PL': '2037,202,0'}, 'XG402': {'AD': '0,62', 'DP': '62', 'GQ': '99', 'GT': '1/1', 'PL': '1796,185,0'}, 'XG403': {'AD': '0,41', 'DP': '41', 'GQ': '99', 'GT': '1/1', 'PL': '1218,122,0'}, 'XG404': {'AD': '1,70', 'DP': '71', 'GQ': '99', 'GT': '1/1', 'PL': '2037,202,0'}}}]
         self.assertEqual(expected_result, value)
@@ -606,16 +616,22 @@ class TestMiniProject1(unittest.TestCase):
     def test_find_variant_2(self):
         filename = 'mini_project1_data.vcf'
         data = self.mini_project1.read_vcf_file(filename)  # read vcf file
-        info_field_data = self.mini_project1.extract_info_field(data)  # extract all the info fields
-        info_field_list = self.mini_project1.create_dictionary_of_info_field_values(info_field_data)  # create dictionary from info fields
-        info_field_data_type = self.mini_project1.determine_data_type_of_info_fields(info_field_list)  # Determine data type of each info field
-        data = self.mini_project1.format_data(data, info_field_data_type)  # format the data variable -- from data = read_vcf_file(filename)
-        self.mini_project1.save_data_as_json(data, 'mini_project1_data.json')  # save the formatted data
+        info_field_data = self.mini_project1.extract_info_field(
+            data)  # extract all the info fields
+        info_field_list = self.mini_project1.create_dictionary_of_info_field_values(
+            info_field_data)  # create dictionary from info fields
+        info_field_data_type = self.mini_project1.determine_data_type_of_info_fields(
+            info_field_list)  # Determine data type of each info field
+        # format the data variable -- from data = read_vcf_file(filename)
+        data = self.mini_project1.format_data(data, info_field_data_type)
+        self.mini_project1.save_data_as_json(
+            data, 'mini_project1_data.json')  # save the formatted data
 
         # Now I will fetch variants using your find_variant function
         # and check that they match my results
 
-        value = self.mini_project1.find_variant("18", "T", "C", 49338409, 'mini_project1_data.json')
+        value = self.mini_project1.find_variant(
+            "18", "T", "C", 49338409, 'mini_project1_data.json')
         expected_result = [{'ALT': 'C', 'CHROM': '18', 'FILTER': 'PASS', 'ID': 'rs75100641', 'INFO': {'1000g2015aug_afr': 0.0136, '1000g2015aug_all': 0.0461262, '1000g2015aug_amr': 0.0086, '1000g2015aug_eur': 0.0249, '1000g2015aug_sas': 0.0838, 'AC': 2, 'AF': 0.333, 'AN': 6, 'ANNOVAR_DATE': '2018-04-16', 'BaseQRankSum': 0.462, 'CADD13_PHRED': 1.888, 'CADD13_RawScore': -0.079391, 'ClippingRankSum': 0, 'DP': 189, 'Eigen': -0.1036, 'ExcessHet': 3.9794, 'FS': 2.119, 'Func.ensGene': 'intergenic', 'Func.refGene': 'intergenic', 'Gene.ensGene': 'ENSG00000265712,ENSG00000215457', 'Gene.refGene': 'LOC100287225,DCC', 'GeneDetail.ensGene': 'dist=123830,dist=32968', 'GeneDetail.refGene': 'dist=249570,dist=528133', 'Kaviar_AC': 816, 'Kaviar_AF': 0.0313509, 'Kaviar_AN': 26028, 'MLEAC': 2, 'MLEAF': 0.333, 'MQ': 60.0, 'MQRankSum': 0.0, 'QD': 13.33, 'ReadPosRankSum': 0.592, 'SOR': 0.89, 'VQSLOD': 22.2, 'avsnp150': 'rs75100641', 'culprit': 'MQ', 'cytoBand': '18q21.2', 'gnomAD_genome_AFR': 0.0147, 'gnomAD_genome_ALL': 0.0225, 'gnomAD_genome_AMR': 0.0155, 'gnomAD_genome_ASJ': 0.0265, 'gnomAD_genome_EAS': 0.1005, 'gnomAD_genome_FIN': 0.0097,
                                                                                                       'gnomAD_genome_NFE': 0.0217, 'gnomAD_genome_OTH': 0.0255, 'snp138NonFlagged': 'rs75100641'}, 'POS': 49338409, 'QUAL': 1893.12, 'REF': 'T', 'SAMPLE': {'XG102': {'AD': '29,44', 'DP': '73', 'GQ': '99', 'GT': '0/1', 'PL': '1066,0,631'}, 'XG103': {'AD': '35,34', 'DP': '69', 'GQ': '99', 'GT': '0/1', 'PL': '838,0,805'}, 'XG104': {'AD': '47,0', 'DP': '47', 'GQ': '99', 'GT': '0/0', 'PL': '0,113,1504'}, 'XG202': {'AD': '29,44', 'DP': '73', 'GQ': '99', 'GT': '0/1', 'PL': '1066,0,631'}, 'XG203': {'AD': '35,34', 'DP': '69', 'GQ': '99', 'GT': '0/1', 'PL': '838,0,805'}, 'XG204': {'AD': '47,0', 'DP': '47', 'GQ': '99', 'GT': '0/0', 'PL': '0,113,1504'}, 'XG302': {'AD': '29,44', 'DP': '73', 'GQ': '99', 'GT': '0/1', 'PL': '1066,0,631'}, 'XG303': {'AD': '35,34', 'DP': '69', 'GQ': '99', 'GT': '0/1', 'PL': '838,0,805'}, 'XG304': {'AD': '47,0', 'DP': '47', 'GQ': '99', 'GT': '0/0', 'PL': '0,113,1504'}, 'XG402': {'AD': '29,44', 'DP': '73', 'GQ': '99', 'GT': '0/1', 'PL': '1066,0,631'}, 'XG403': {'AD': '35,34', 'DP': '69', 'GQ': '99', 'GT': '0/1', 'PL': '838,0,805'}, 'XG404': {'AD': '47,0', 'DP': '47', 'GQ': '99', 'GT': '0/0', 'PL': '0,113,1504'}}}]
         self.assertEqual(expected_result, value)
@@ -626,16 +642,22 @@ class TestMiniProject1(unittest.TestCase):
     def test_find_variant_3(self):
         filename = 'mini_project1_data.vcf'
         data = self.mini_project1.read_vcf_file(filename)  # read vcf file
-        info_field_data = self.mini_project1.extract_info_field(data)  # extract all the info fields
-        info_field_list = self.mini_project1.create_dictionary_of_info_field_values(info_field_data)  # create dictionary from info fields
-        info_field_data_type = self.mini_project1.determine_data_type_of_info_fields(info_field_list)  # Determine data type of each info field
-        data = self.mini_project1.format_data(data, info_field_data_type)  # format the data variable -- from data = read_vcf_file(filename)
-        self.mini_project1.save_data_as_json(data, 'mini_project1_data.json')  # save the formatted data
+        info_field_data = self.mini_project1.extract_info_field(
+            data)  # extract all the info fields
+        info_field_list = self.mini_project1.create_dictionary_of_info_field_values(
+            info_field_data)  # create dictionary from info fields
+        info_field_data_type = self.mini_project1.determine_data_type_of_info_fields(
+            info_field_list)  # Determine data type of each info field
+        # format the data variable -- from data = read_vcf_file(filename)
+        data = self.mini_project1.format_data(data, info_field_data_type)
+        self.mini_project1.save_data_as_json(
+            data, 'mini_project1_data.json')  # save the formatted data
 
         # Now I will fetch variants using your find_variant function
         # and check that they match my results
 
-        value = self.mini_project1.find_variant("10", "CT", "C", 80242879, 'mini_project1_data.json')
+        value = self.mini_project1.find_variant(
+            "10", "CT", "C", 80242879, 'mini_project1_data.json')
         expected_result = [{'ALT': 'C', 'CHROM': '10', 'FILTER': 'PASS', 'ID': '.', 'INFO': {'AC': 2, 'AF': 0.333, 'AN': 6, 'ANNOVAR_DATE': '2018-04-16', 'BaseQRankSum': 1.99, 'ClippingRankSum': 0, 'DP': 183, 'ExcessHet': 3.9794, 'FS': 2.263, 'Func.ensGene': 'ncRNA_intronic', 'Func.refGene': 'intergenic', 'Gene.ensGene': 'ENSG00000230417', 'Gene.refGene': 'LINC00595,ZMIZ1-AS1', 'GeneDetail.refGene': 'dist=202910,dist=460203', 'Kaviar_AC': 3, 'Kaviar_AF': 0.0001153, 'Kaviar_AN': 26028, 'MLEAC': 2, 'MLEAF': 0.333, 'MQ': 60.0, 'MQRankSum': 0.0, 'QD': 12.24, 'ReadPosRankSum': 1.19, 'SOR': 0.686, 'VQSLOD': 21.46, 'avsnp150': 'rs1046715494', 'culprit': 'MQRankSum', 'cytoBand': '10q22.3', 'gnomAD_genome_AFR': 0.0, 'gnomAD_genome_ALL': 6.471e-05, 'gnomAD_genome_AMR': 0.0, 'gnomAD_genome_ASJ': 0.0033, 'gnomAD_genome_EAS': 0.0, 'gnomAD_genome_FIN': 0.0, 'gnomAD_genome_NFE': 6.676e-05, 'gnomAD_genome_OTH': 0.0}, 'POS': 80242879, 'QUAL': 1567.12, 'REF': 'CT', 'SAMPLE': {'XG102': {
             'AD': '19,41', 'DP': '60', 'GQ': '99', 'GT': '0/1', 'PL': '1231,0,457'}, 'XG103': {'AD': '52,16', 'DP': '68', 'GQ': '99', 'GT': '0/1', 'PL': '347,0,1536'}, 'XG104': {'AD': '54,0', 'DP': '54', 'GQ': '99', 'GT': '0/0', 'PL': '0,120,1800'}, 'XG202': {'AD': '19,41', 'DP': '60', 'GQ': '99', 'GT': '0/1', 'PL': '1231,0,457'}, 'XG203': {'AD': '52,16', 'DP': '68', 'GQ': '99', 'GT': '0/1', 'PL': '347,0,1536'}, 'XG204': {'AD': '54,0', 'DP': '54', 'GQ': '99', 'GT': '0/0', 'PL': '0,120,1800'}, 'XG302': {'AD': '19,41', 'DP': '60', 'GQ': '99', 'GT': '0/1', 'PL': '1231,0,457'}, 'XG303': {'AD': '52,16', 'DP': '68', 'GQ': '99', 'GT': '0/1', 'PL': '347,0,1536'}, 'XG304': {'AD': '54,0', 'DP': '54', 'GQ': '99', 'GT': '0/0', 'PL': '0,120,1800'}, 'XG402': {'AD': '19,41', 'DP': '60', 'GQ': '99', 'GT': '0/1', 'PL': '1231,0,457'}, 'XG403': {'AD': '52,16', 'DP': '68', 'GQ': '99', 'GT': '0/1', 'PL': '347,0,1536'}, 'XG404': {'AD': '54,0', 'DP': '54', 'GQ': '99', 'GT': '0/0', 'PL': '0,120,1800'}}}]
         self.assertEqual(expected_result, value)
@@ -702,33 +724,32 @@ class TestMiniProject1(unittest.TestCase):
         ]
         self.assertEqual(expected_result, value)
 
-
     @weight(40)
     @visibility('visible')
     @number("12.1")
     def test_pull_basic_and_predictor_fields_gzip(self):
         import json
         filename = 'test_4families_annovar.vcf.gz'
-        
+
         if os.path.exists('mini_project1_gzip.json'):
             os.remove('mini_project1_gzip.json')
         self.mini_project1.pull_basic_and_predictor_fields_gzip(filename)
         expected_result = json.load(open('expected_mini_project1_gzip.json'))
         value = json.load(open('mini_project1_gzip.json'))
-        
-        self.assertEqual(expected_result, value)
 
+        self.assertEqual(expected_result, value)
 
     @weight(20)
     @visibility('visible')
     @number("13.1")
     def test_return_all_non_zero_sum_predictor_values(self):
         import json
-        
+
         if os.path.exists('sum_predictor_values_gt_zero.json'):
             os.remove('sum_predictor_values_gt_zero.json')
         self.mini_project1.return_all_non_zero_sum_predictor_values()
-        expected_result = json.load(open('expected_sum_predictor_values_gt_zero.json'))
+        expected_result = json.load(
+            open('expected_sum_predictor_values_gt_zero.json'))
         value = json.load(open('sum_predictor_values_gt_zero.json'))
-        
+
         self.assertEqual(expected_result, value)
