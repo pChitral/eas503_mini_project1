@@ -158,7 +158,18 @@ def format_sample_fields(format_field, sample_field):
     """
 
     # BEGIN SOLUTION
-    pass
+    output = {}
+
+    dict_keys = sample_field.keys() 
+    inner_keys = format_field.split(":")
+
+    for key in dict_keys:
+        key_key_value = sample_field[key].split(":")
+        temp_dict = {}
+        for i in range(len(key_key_value)):
+            temp_dict[inner_keys[i]] = key_key_value[i]
+        output[key] = temp_dict
+    return output
     # END SOLUTION
 
 

@@ -107,25 +107,22 @@
         },
         {
             "name": "test_format_sample_fields_1 (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 6,
             "max_score": 6,
-            "output": "Test Failed: 'NoneType' object is not subscriptable\n",
             "visibility": "visible",
             "number": "3.1"
         },
         {
             "name": "test_format_sample_fields_2 (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 6,
             "max_score": 6,
-            "output": "Test Failed: 'NoneType' object is not subscriptable\n",
             "visibility": "visible",
             "number": "3.2"
         },
         {
             "name": "test_format_sample_fields_3 (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 6,
             "max_score": 6,
-            "output": "Test Failed: 'NoneType' object is not subscriptable\n",
             "visibility": "visible",
             "number": "3.3"
         },
@@ -173,5 +170,5 @@
     "leaderboard": [],
     "visibility": "visible",
     "execution_time": "0.00",
-    "score": 21.0
+    "score": 39.0
 }
