@@ -174,7 +174,6 @@ def format_sample_fields(format_field, sample_field):
 
 
 def create_dict_from_line(header, line):
-    import ipdb
     """
     Given the header and a single line, transform them into dictionary as described above. 
     Header and line input are provided in this cell. 
@@ -333,6 +332,7 @@ def create_dictionary_of_info_field_values(data):
     dicto = {}
     info_maal = extract_info_field(data)
     ith_info_maal = []
+
     for i in range(len(info_maal)):
         ith_info_maal = (info_maal[i].split(";"))
         for j in range(len(ith_info_maal)):
@@ -343,7 +343,7 @@ def create_dictionary_of_info_field_values(data):
                         dicto[key] = [value]
                     else:
                         if value not in dicto[key]:
-                            dicto[key] += [value]
+                            dicto[key].append(value)
             except:
                 continue
     return dicto
