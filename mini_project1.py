@@ -343,7 +343,7 @@ def create_dictionary_of_info_field_values(data):
                         dicto[key] = [value]
                     else:
                         if value not in dicto[key]:
-                            dicto[key]+= [value]
+                            dicto[key] += [value]
             except:
                 continue
     return dicto
