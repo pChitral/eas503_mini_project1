@@ -316,12 +316,15 @@ def extract_info_field(data):
     for i in range(len(data)):
         answer_list.append(data[i]["INFO"])
     return answer_list
+
     # END SOLUTION
 
 
 def create_dictionary_of_info_field_values(data):
     """
-    You now need to figure out that data types for each of the info fields. Begin by writing a function that first takes the info fields and turns them into a dictionary. Make sure to skip any fields that do not have a value or are missing a value.
+    You now need to figure out that data types for each of the info fields. 
+    Begin by writing a function that first takes the info fields and turns them into a dictionary.
+    Make sure to skip any fields that do not have a value or are missing a value.
 
     Note: only return keys that have values! 
     """
