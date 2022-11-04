@@ -358,7 +358,15 @@ def determine_data_type_of_info_fields(data):
     keys are the name of the info fields and values are the data type. 
     """
     # BEGIN SOLUTION
-    pass
+    dict_keys = list(data.keys())
+    dict_data_types =  {}
+    key_data_type = []
+    for key in dict_keys:
+        key_data_type.append(determine_data_type_of_list(data[key]))
+    for i in range(len(dict_keys)):
+        dict_data_types[dict_keys[i]] = key_data_type[i]
+    return dict_data_types
+
     # END SOLUTION
 
 

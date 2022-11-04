@@ -3,7 +3,7 @@ from gradescope_utils.autograder_utils.json_test_runner import JSONTestRunner
 import os
 
 if __name__ == '__main__':
-    suite = unittest.defaultTestLoader.discover('tests') 
+    suite = unittest.defaultTestLoader.discover('tests')
     if os.path.exists('/autograder/results/'):
         filepath = '/autograder/results/results.json'
     else:
