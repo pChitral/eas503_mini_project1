@@ -342,7 +342,25 @@ def determine_data_type_of_info_fields(data):
     keys are the name of the info fields and values are the data type. 
     """
     # BEGIN SOLUTION
-    pass
+    info_field = extract_info_field(data)
+    dicto = {}
+    for i in range(len(info_field)):
+        info_maal_2 = extract_info_field(data)[i].split(";")
+        for j in range(len(info_maal_2)):
+            try:
+                key, value = info_maal_2[j].split("=")
+                if value != ".":
+               
+                    dicto[key] = value
+                    
+            except:
+                continue
+
+    dicto_keys = dicto.keys()
+
+    print(dicto_keys)
+    dicto["AC"]
+    return dicto
     # END SOLUTION
 
 

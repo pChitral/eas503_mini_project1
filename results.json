@@ -40,7 +40,7 @@
             "name": "test_determine_data_type_of_info_fields (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 10,
-            "output": "Test Failed: {'key1': <class 'int'>, 'key2': <class 'f[50 chars]tr'>} != None\n",
+            "output": "Test Failed: 0\n",
             "visibility": "visible",
             "number": "8"
         },
@@ -166,6 +166,6 @@
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "0.22",
+    "execution_time": "0.23",
     "score": 65.0
 }
