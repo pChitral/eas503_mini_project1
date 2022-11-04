@@ -330,7 +330,23 @@ def create_dictionary_of_info_field_values(data):
     """
 
     # BEGIN SOLUTION
-    pass
+    dicto = {}
+    info_maal = extract_info_field(data)
+    ith_info_maal = []
+    for i in range(len(info_maal)):
+        ith_info_maal = (info_maal[i].split(";"))
+        for j in range(len(ith_info_maal)):
+            try:
+                key, value = ith_info_maal[j].split("=", 1)
+                if value != ".":
+                    if key not in dicto.keys():
+                        dicto[key] = [value]
+                    else:
+                        if value not in dicto[key]:
+                            dicto[key]+= [value]
+            except:
+                continue
+    return dicto
     # END SOLUTION
 
 
@@ -342,25 +358,7 @@ def determine_data_type_of_info_fields(data):
     keys are the name of the info fields and values are the data type. 
     """
     # BEGIN SOLUTION
-    info_field = extract_info_field(data)
-    dicto = {}
-    for i in range(len(info_field)):
-        info_maal_2 = extract_info_field(data)[i].split(";")
-        for j in range(len(info_maal_2)):
-            try:
-                key, value = info_maal_2[j].split("=")
-                if value != ".":
-               
-                    dicto[key] = value
-                    
-            except:
-                continue
-
-    dicto_keys = dicto.keys()
-
-    print(dicto_keys)
-    dicto["AC"]
-    return dicto
+    pass
     # END SOLUTION
 
 

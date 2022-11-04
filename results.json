@@ -11,7 +11,7 @@
             "name": "test_create_dictionary_of_info_field_value (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 10,
-            "output": "Test Failed: {'AC': ['1', '6'], 'AF': ['0.167', '1'], [1445 chars]28']} != None\n",
+            "output": "Test Failed: string indices must be integers\n",
             "visibility": "visible",
             "number": "7"
         },
@@ -166,6 +166,6 @@
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "0.23",
+    "execution_time": "0.29",
     "score": 65.0
 }
