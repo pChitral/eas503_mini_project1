@@ -74,9 +74,8 @@
         },
         {
             "name": "test_extract_info_field (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 6,
             "max_score": 6,
-            "output": "Test Failed: 'NoneType' object is not subscriptable\n",
             "visibility": "visible",
             "number": "6"
         },
@@ -167,6 +166,6 @@
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "0.29",
-    "score": 59.0
+    "execution_time": "0.30",
+    "score": 65.0
 }

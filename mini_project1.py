@@ -290,7 +290,7 @@ def read_vcf_file(filename):
     NOTE: Your function should be able to handle multiple lines.
     """
     # BEGIN SOLUTION
-    with open (filename) as file:
+    with open(filename) as file:
         list_of_lines = []
         for line in file:
             if not line.strip():
@@ -312,7 +312,10 @@ def extract_info_field(data):
     created in the previous part. The function should return all the info field dictionaries as list. 
     """
     # BEGIN SOLUTION
-    pass
+    answer_list = []
+    for i in range(len(data)):
+        answer_list.append(data[i]["INFO"])
+    return answer_list
     # END SOLUTION
 
 
