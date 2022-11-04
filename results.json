@@ -84,7 +84,7 @@
             "name": "test_find_variant_1 (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 20,
-            "output": "Test Failed: [{'ALT': 'G', 'CHROM': '13', 'FILTER': 'P[2184 chars]'}}}] != None\n",
+            "output": "Test Failed: list index out of range\n",
             "visibility": "visible",
             "number": "10.1"
         },
@@ -92,7 +92,7 @@
             "name": "test_find_variant_2 (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 20,
-            "output": "Test Failed: [{'ALT': 'C', 'CHROM': '18', 'FILTER': 'P[2205 chars]'}}}] != None\n",
+            "output": "Test Failed: list index out of range\n",
             "visibility": "visible",
             "number": "10.2"
         },
@@ -100,7 +100,7 @@
             "name": "test_find_variant_3 (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 20,
-            "output": "Test Failed: [{'ALT': 'C', 'CHROM': '10', 'FILTER': 'P[1894 chars]'}}}] != None\n",
+            "output": "Test Failed: list index out of range\n",
             "visibility": "visible",
             "number": "10.3"
         },
@@ -151,9 +151,8 @@
         },
         {
             "name": "test_read_vcf_file (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 10,
             "max_score": 10,
-            "output": "Test Failed: [{'CHROM': '4', 'POS': '123416186', 'ID':[10616 chars]'}}}] != None\n",
             "visibility": "visible",
             "number": "5"
         },
@@ -168,6 +167,6 @@
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "0.36",
-    "score": 49.0
+    "execution_time": "0.29",
+    "score": 59.0
 }

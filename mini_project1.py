@@ -290,7 +290,19 @@ def read_vcf_file(filename):
     NOTE: Your function should be able to handle multiple lines.
     """
     # BEGIN SOLUTION
-    pass
+    with open (filename) as file:
+        list_of_lines = []
+        for line in file:
+            if not line.strip():
+                continue
+            list_of_lines.append(line.strip("\n"))
+    list_of_dicts = []
+    headers = list_of_lines[0].split("\t")
+    headers[0] = "CHROM"
+    for i in range(1, len(list_of_lines)):
+        list_of_dicts.append(create_dict_from_line(headers, list_of_lines[i]))
+    return list_of_dicts
+
     # END SOLUTION
 
 
