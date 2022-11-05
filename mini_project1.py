@@ -330,7 +330,7 @@ def create_dictionary_of_info_field_values(data):
 
     # BEGIN SOLUTION
     dicto = {}
-    info_maal = extract_info_field(data)
+    info_maal = (data)
     ith_info_maal = []
 
     for i in range(len(info_maal)):
@@ -358,19 +358,29 @@ def determine_data_type_of_info_fields(data):
     keys are the name of the info fields and values are the data type. 
     """
     # BEGIN SOLUTION
+
+    # Let's make our keys handy
     dict_keys = list(data.keys())
+
+    # Setting up the base for the cake
     dict_data_types =  {}
     key_data_type = []
+
+    # Appending the data type of the corresponding key in our list "key_data_type""
     for key in dict_keys:
         key_data_type.append(determine_data_type_of_list(data[key]))
+
+    # Fetching the data type for the respective key from our "key_data_type" list and assigning it as the value for our final answer dictionay named "dict_data_types"'s key    
     for i in range(len(dict_keys)):
         dict_data_types[dict_keys[i]] = key_data_type[i]
+
     return dict_data_types
 
     # END SOLUTION
 
 
 def format_data(data, info_field_data_type):
+    # DATA is a list of dictionaries 
     """
     Write a function whose first input is the data from read_vcf_file and 
     the second input is the output from determine_data_type_of_info_fields. 
