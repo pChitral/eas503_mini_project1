@@ -363,14 +363,14 @@ def determine_data_type_of_info_fields(data):
     dict_keys = list(data.keys())
 
     # Setting up the base for the cake
-    dict_data_types =  {}
+    dict_data_types = {}
     key_data_type = []
 
     # Appending the data type of the corresponding key in our list "key_data_type""
     for key in dict_keys:
         key_data_type.append(determine_data_type_of_list(data[key]))
 
-    # Fetching the data type for the respective key from our "key_data_type" list and assigning it as the value for our final answer dictionay named "dict_data_types"'s key    
+    # Fetching the data type for the respective key from our "key_data_type" list and assigning it as the value for our final answer dictionay named "dict_data_types"'s key
     for i in range(len(dict_keys)):
         dict_data_types[dict_keys[i]] = key_data_type[i]
 
@@ -380,7 +380,7 @@ def determine_data_type_of_info_fields(data):
 
 
 def format_data(data, info_field_data_type):
-    # DATA is a list of dictionaries 
+    # DATA is a list of dictionaries
     """
     Write a function whose first input is the data from read_vcf_file and 
     the second input is the output from determine_data_type_of_info_fields. 
