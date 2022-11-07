@@ -433,18 +433,19 @@ def format_data(data, info_field_data_type):
     NOTE: You can only test this function in the last part! There are not tests for it    
 
     """
+
     # BEGIN SOLUTION
     final_answer_list_of_dicts = []
     for dicto in data:
 
-        # Handling int and float scene 
+        # Handling int and float scene
         dicto["QUAL"] = float(dicto["QUAL"])
         dicto["POS"] = int(dicto["POS"])
 
-        # Creating a dictionary from the list and reassigning it to the info field 
+        # Creating a dictionary from the list and reassigning it to the info field
         dicto["INFO"] = create_dictionary_of_info_field_values(dicto["INFO"])
 
-        # Grabbing all the keys of value of INFO field. 
+        # Grabbing all the keys of value of INFO field.
         dicto_keys = list(dicto["INFO"].keys())
 
         # Putting them in the data type according to the second input of the function that holds the data type for respective field for our INFO field
@@ -453,6 +454,7 @@ def format_data(data, info_field_data_type):
             dicto["INFO"][key] = convert_type(dicto["INFO"][key])
 
         final_answer_list_of_dicts.append(dicto)
+    # ipdb.set_trace()
 
     return final_answer_list_of_dicts
 
@@ -469,9 +471,10 @@ def save_data_as_json(data, filename):
     Use this function to save your parsed data as a json file.
     """
     # BEGIN SOLUTION
-    import json 
+    import json
 
-    dict_to_json = json.dumps(data, sort_keys=True, indent=4, separators=(',', ': '), ensure_ascii=False)
+    dict_to_json = json.dumps(
+        data, sort_keys=True, indent=4, separators=(',', ': '), ensure_ascii=False)
 
     with open(filename, "w") as file:
         file.write(dict_to_json)
@@ -500,11 +503,15 @@ def find_variant(CHROM, REF, ALT, POS, filename):
     filename and return a list of variants that match the given CHROM, REF, ALT, and POS. 
     """
     # BEGIN SOLUTION
-    list_of_variants = []
-    for variant in load_data_from_json(filename):
-        if variant["CHROM"] == CHROM and variant["REF"] == REF and variant["ALT"] == ALT and variant["POS"] == POS:
-            list_of_variants.append(variant)
-    return list_of_variants
+    # import ipdb
+    # list_of_variants = []
+    # maal = load_data_from_json(filename)
+    # for variant in maal:
+    #     if variant["CHROM"] == CHROM and variant["REF"] == REF and variant["ALT"] == ALT and variant["POS"] == POS:
+    #         list_of_variants.append(variant)
+    # ipdb.set_trace()
+    # return list_of_variants
+    print("CHROM")
     # END SOLUTION
 
 
