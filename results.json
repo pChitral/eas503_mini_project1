@@ -11,6 +11,7 @@
             "name": "test_create_dictionary_of_info_field_value (test_mini_project1.TestMiniProject1)",
             "score": 10,
             "max_score": 10,
+            "output": "Entering our function\nExiting our function\n",
             "visibility": "visible",
             "number": "7"
         },
@@ -81,7 +82,7 @@
             "name": "test_find_variant_1 (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 20,
-            "output": "Test Failed: list index out of range\n",
+            "output": "Test Failed: 'INFO'\n",
             "visibility": "visible",
             "number": "10.1"
         },
@@ -89,7 +90,7 @@
             "name": "test_find_variant_2 (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 20,
-            "output": "Test Failed: list index out of range\n",
+            "output": "Test Failed: 'INFO'\n",
             "visibility": "visible",
             "number": "10.2"
         },
@@ -97,7 +98,7 @@
             "name": "test_find_variant_3 (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 20,
-            "output": "Test Failed: list index out of range\n",
+            "output": "Test Failed: 'INFO'\n",
             "visibility": "visible",
             "number": "10.3"
         },
