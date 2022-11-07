@@ -489,6 +489,7 @@ def load_data_from_json(filename):
     import json
     reading_json = open(filename)
     data = json.load(reading_json)
+    return data
     # END SOLUTION
 
 
@@ -514,7 +515,7 @@ def pull_basic_and_predictor_fields(filename):
     # BEGIN SOLUTION
     import json
     maal = json.load(open(filename))
-    
+
     # END SOLUTION
 
 

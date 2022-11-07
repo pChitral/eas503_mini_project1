@@ -124,9 +124,8 @@
         },
         {
             "name": "test_load_data_from_json (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 10,
             "max_score": 10,
-            "output": "Test Failed: {'key1': ['1', '2', '3'], 'key2': ['1.1',[76 chars].3']} != None\n",
             "visibility": "visible",
             "number": "9"
         },
@@ -134,7 +133,7 @@
             "name": "test_pull_basic_and_predictor_fields (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 20,
-            "output": "Test Failed: [{'FATHMM_pred': 'T', 'LRT_pred': 'D', 'M[900 chars]'T'}] != None\n",
+            "output": "Test Failed: [Errno 2] No such file or directory: 'mini_project1_data.json'\n",
             "visibility": "visible",
             "number": "11.1"
         },
@@ -165,5 +164,5 @@
     "leaderboard": [],
     "visibility": "visible",
     "execution_time": "0.03",
-    "score": 85.0
+    "score": 95.0
 }
