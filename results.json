@@ -11,7 +11,6 @@
             "name": "test_create_dictionary_of_info_field_value (test_mini_project1.TestMiniProject1)",
             "score": 10,
             "max_score": 10,
-            "output": "Entering our function\nExiting our function\n",
             "visibility": "visible",
             "number": "7"
         },
@@ -80,25 +79,22 @@
         },
         {
             "name": "test_find_variant_1 (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 20,
             "max_score": 20,
-            "output": "Test Failed: 'INFO'\n",
             "visibility": "visible",
             "number": "10.1"
         },
         {
             "name": "test_find_variant_2 (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 20,
             "max_score": 20,
-            "output": "Test Failed: 'INFO'\n",
             "visibility": "visible",
             "number": "10.2"
         },
         {
             "name": "test_find_variant_3 (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 20,
             "max_score": 20,
-            "output": "Test Failed: 'INFO'\n",
             "visibility": "visible",
             "number": "10.3"
         },
@@ -134,7 +130,7 @@
             "name": "test_pull_basic_and_predictor_fields (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 20,
-            "output": "Test Failed: [Errno 2] No such file or directory: 'mini_project1_data.json'\n",
+            "output": "Test Failed: [{'FATHMM_pred': 'T', 'LRT_pred': 'D', 'M[900 chars]'T'}] != None\n",
             "visibility": "visible",
             "number": "11.1"
         },
@@ -164,6 +160,6 @@
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "0.03",
-    "score": 95.0
+    "execution_time": "1.64",
+    "score": 155.0
 }

@@ -274,7 +274,7 @@ def create_dict_from_line(header, line):
         if i == 7:
             final_ans_dict["SAMPLE"] = format_sample_fields(
                 list_of_lines[i+1], Dict_of_dict_of_everything_after_format)
-
+        
     # ipdb.set_trace()
     return final_ans_dict
     # END SOLUTION

@@ -47,6 +47,8 @@ def format_sample_fields(format_field, sample_field):
 
 def create_dict_from_line(header, line):
 
+    # BEGIN SOLUTION
+
     temp_dict = {}
     list_of_lines = line.split("\t")
 
@@ -62,39 +64,38 @@ def create_dict_from_line(header, line):
                                                 ] = list_of_lines[i]
 
     final_ans_dict = {}
-    try:
-        for i in range(8):
-            final_ans_dict[temp_dict_keys[i]] = list_of_lines[i]
-            if i == 7:
-                final_ans_dict["SAMPLE"] = format_sample_fields(
-                    list_of_lines[i+1], Dict_of_dict_of_everything_after_format)
-    except:
-        pass
+    for i in range(8):
+        final_ans_dict[temp_dict_keys[i]] = list_of_lines[i]
+        if i == 7:
+            final_ans_dict["SAMPLE"] = format_sample_fields(
+                list_of_lines[i+1], Dict_of_dict_of_everything_after_format)
 
     # ipdb.set_trace()
     return final_ans_dict
+    # END SOLUTION
 
 
 def read_vcf_file(filename):
 
+    # BEGIN SOLUTION
+    list_of_lines = []
+    list_of_dicts = []
+    
     with open(filename) as file:
-        list_of_lines = []
         for line in file:
             if not line.strip():
                 continue
-            new_line = line.strip("\n")
-            updated_line = new_line.strip("#")
-            list_of_lines.append(updated_line)
-    list_of_dicts = []
-    headers = list_of_lines[0].split("\t")
-    headers[0] = "CHROM"
-    try:
-        for i in range(1, len(list_of_lines)):
-            list_of_dicts.append(
-                create_dict_from_line(headers, list_of_lines[i]))
-    except:
-        pass
+            if "#" in line:
+                line_without_hash = line[1:].rstrip()
+            else:
+                list_of_lines.append(line.rstrip())
+    
+    for i in range(len(list_of_lines)):
+        dicto_of_ith_line = create_dict_from_line(line_without_hash.split("\t"), list_of_lines[i])
+        list_of_dicts.append(dicto_of_ith_line)
+
     return list_of_dicts
+    # END SOLUTION
 
 
 def extract_info_field(data):
@@ -106,7 +107,6 @@ def extract_info_field(data):
 
 
 def create_dictionary_of_info_field_values(data):
-    print("Entering our function")
     # BEGIN SOLUTION
     dicto = {}
     info_maal = (data)
@@ -125,7 +125,6 @@ def create_dictionary_of_info_field_values(data):
                             dicto[key] += [value]
             except:
                 continue
-    print("Exiting our function")
     return dicto
 
 
@@ -159,15 +158,16 @@ def format_data(data, info_field_data_type):
         dicto["POS"] = int(dicto["POS"])
 
         # Creating a dictionary from the list and reassigning it to the info field
-        asd = create_dictionary_of_info_field_values(extract_info_field([dicto]))
+        asd = create_dictionary_of_info_field_values(
+            extract_info_field([dicto]))
 
         # Grabbing all the keys of value of INFO field.
         # dicto_info_keys = list(dicto["INFO"].keys())
 
         # Putting them in the data type according to the second input of the function that holds the data type for respective field for our INFO field
-        for key,value in asd.items():
+        for key, value in asd.items():
             asd[key] = info_field_data_type[key](value[0])
-        dicto["INFO"]= asd
+        dicto["INFO"] = asd
 
         final_answer_list_of_dicts.append(dicto)
     # ipdb.set_trace()
