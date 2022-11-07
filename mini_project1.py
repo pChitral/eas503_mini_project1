@@ -142,7 +142,7 @@ def determine_data_type_of_info_fields(data):
 def format_data(data, info_field_data_type):
 
     final_answer_list_of_dicts = []
-    
+
     for dicto in data:
 
         # Handling int and float scene
@@ -150,13 +150,14 @@ def format_data(data, info_field_data_type):
         dicto["POS"] = int(dicto["POS"])
 
         # Creating a dictionary from the list and reassigning it to the info field
-        dicto["INFO"] = create_dictionary_of_info_field_values(dicto["INFO"])
+
+        dicto["INFO"] = create_dictionary_of_info_field_values(dicto["INFO"])        
 
         # Grabbing all the keys of value of INFO field.
-        dicto_keys = list(dicto["INFO"].keys())
+        dicto_info_keys = list(dicto["INFO"].keys())
 
         # Putting them in the data type according to the second input of the function that holds the data type for respective field for our INFO field
-        for key in dicto_keys:
+        for key in dicto_info_keys:
             convert_type = info_field_data_type[key]
             dicto["INFO"][key] = convert_type(dicto["INFO"][key])
 
