@@ -80,7 +80,7 @@ def read_vcf_file(filename):
     # BEGIN SOLUTION
     list_of_lines = []
     list_of_dicts = []
-    
+
     with open(filename) as file:
         for line in file:
             if not line.strip():
@@ -89,9 +89,10 @@ def read_vcf_file(filename):
                 line_without_hash = line[1:].rstrip()
             else:
                 list_of_lines.append(line.rstrip())
-    
+
     for i in range(len(list_of_lines)):
-        dicto_of_ith_line = create_dict_from_line(line_without_hash.split("\t"), list_of_lines[i])
+        dicto_of_ith_line = create_dict_from_line(
+            line_without_hash.split("\t"), list_of_lines[i])
         list_of_dicts.append(dicto_of_ith_line)
 
     return list_of_dicts
@@ -149,6 +150,7 @@ def determine_data_type_of_info_fields(data):
 
 
 def format_data(data, info_field_data_type):
+
     final_answer_list_of_dicts = []
 
     for dicto in data:
@@ -158,16 +160,17 @@ def format_data(data, info_field_data_type):
         dicto["POS"] = int(dicto["POS"])
 
         # Creating a dictionary from the list and reassigning it to the info field
-        asd = create_dictionary_of_info_field_values(
+        info_dict = create_dictionary_of_info_field_values(
             extract_info_field([dicto]))
 
         # Grabbing all the keys of value of INFO field.
-        # dicto_info_keys = list(dicto["INFO"].keys())
+        dicto_info_keys = list(info_dict.keys())
 
         # Putting them in the data type according to the second input of the function that holds the data type for respective field for our INFO field
-        for key, value in asd.items():
-            asd[key] = info_field_data_type[key](value[0])
-        dicto["INFO"] = asd
+        for i in range(len(dicto_info_keys)):
+            info_dict[dicto_info_keys[i]] = info_field_data_type[dicto_info_keys[i]](
+                info_dict[dicto_info_keys[i]][0])
+        dicto["INFO"] = info_dict
 
         final_answer_list_of_dicts.append(dicto)
     # ipdb.set_trace()
