@@ -434,7 +434,28 @@ def format_data(data, info_field_data_type):
 
     """
     # BEGIN SOLUTION
-    pass
+    final_answer_list_of_dicts = []
+    for dicto in data:
+
+        # Handling int and float scene 
+        dicto["QUAL"] = float(dicto["QUAL"])
+        dicto["POS"] = int(dicto["POS"])
+
+        # Creating a dictionary from the list and reassigning it to the info field 
+        dicto["INFO"] = create_dictionary_of_info_field_values(dicto["INFO"])
+
+        # Grabbing all the keys of value of INFO field. 
+        dicto_keys = list(dicto["INFO"].keys())
+
+        # Putting them in the data type according to the second input of the function that holds the data type for respective field for our INFO field
+        for key in dicto_keys:
+            convert_type = info_field_data_type[key]
+            dicto["INFO"][key] = convert_type(dicto["INFO"][key])
+
+        final_answer_list_of_dicts.append(dicto)
+
+    return final_answer_list_of_dicts
+
     # END SOLUTION
 
 
@@ -448,7 +469,13 @@ def save_data_as_json(data, filename):
     Use this function to save your parsed data as a json file.
     """
     # BEGIN SOLUTION
-    pass
+    import json 
+
+    dict_to_json = json.dumps(data, sort_keys=True, indent=4, separators=(',', ': '), ensure_ascii=False)
+
+    with open(filename, "w") as file:
+        file.write(dict_to_json)
+
     # END SOLUTION
 
 
@@ -459,7 +486,9 @@ def load_data_from_json(filename):
     which you saved your final parsed data. 
     """
     # BEGIN SOLUTION
-    pass
+    import json
+    reading_json = open(filename)
+    data = json.load(reading_json)
     # END SOLUTION
 
 
@@ -470,7 +499,11 @@ def find_variant(CHROM, REF, ALT, POS, filename):
     filename and return a list of variants that match the given CHROM, REF, ALT, and POS. 
     """
     # BEGIN SOLUTION
-    pass
+    list_of_variants = []
+    for variant in load_data_from_json(filename):
+        if variant["CHROM"] == CHROM and variant["REF"] == REF and variant["ALT"] == ALT and variant["POS"] == POS:
+            list_of_variants.append(variant)
+    return list_of_variants
     # END SOLUTION
 
 
@@ -479,7 +512,9 @@ def pull_basic_and_predictor_fields(filename):
     Load mini_project1_data.json and pull out all the variants that have a 
     """
     # BEGIN SOLUTION
-    pass
+    import json
+    maal = json.load(open(filename))
+    
     # END SOLUTION
 
 
