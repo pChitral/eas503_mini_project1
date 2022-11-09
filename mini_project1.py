@@ -224,8 +224,7 @@ def find_variant(CHROM, REF, ALT, POS, filename):
     # BEGIN SOLUTION
     # import ipdb
     list_of_variants = []
-    maal = load_data_from_json(filename)
-    for variant in maal:
+    for variant in load_data_from_json(filename):
         if variant["CHROM"] == CHROM and variant["REF"] == REF and variant["ALT"] == ALT and variant["POS"] == POS:
             list_of_variants.append(variant)
     # ipdb.set_trace()
@@ -241,6 +240,75 @@ def pull_basic_and_predictor_fields(filename):
     # BEGIN SOLUTION
     import json
     maal = json.load(open(filename))
+    int_val_dict = {"FATHMM_pred": {"T": 0,
+                                    "D": 1},
+
+                    "LRT_pred": {"D": 1,
+                                 "N": 0,
+                                 "U": 0},
+                    "MetaLR_pred": {"T": 0,
+                                    "D": 1},
+                    "MetaSVM_pred": {"T": 0,
+                                     "D": 1},
+
+                    "MutationAssessor_pred": {"H": 1,
+                                              "N": 0,
+                                              "L": 0.25,
+                                              "M": 0.5},
+                    "MutationTaster_pred": {"D": 1,
+                                            "P": 0,
+                                            "N": 0,
+                                            "A": 1},
+                    "PROVEAN_pred":  {"D": 1,
+                                      "N": 0},
+                    "Polyphen2_HDIV_pred": {"D": 1,
+                                            "B": 0,
+                                            "P": 0.5},
+                    "Polyphen2_HVAR_pred":    {"D": 1,
+                                               "B": 0,
+                                               "P": 0.5},
+
+                    "SIFT_pred": {"D": 1,
+                                  "T": 0},
+                    "fathmm_MKL_coding_pred": {"D": 1,
+                                               "N": 0}
+
+                    }
+    predictors = [
+        'FATHMM_pred',
+        'LRT_pred',
+        'MetaLR_pred',
+        'MetaSVM_pred',
+        'MutationAssessor_pred',
+        'MutationTaster_pred',
+        'PROVEAN_pred',
+        'Polyphen2_HDIV_pred',
+        'Polyphen2_HVAR_pred',
+        'SIFT_pred',
+        'fathmm_MKL_coding_pred']
+
+    fml_list_dict = []
+    full_final = []
+
+    for i in range(len(maal)):
+        if predictors[0] in maal[i]["INFO"].keys():
+            fml_list_dict.append(maal[i])
+
+    for i in range(len(fml_list_dict)):
+        temp_dicto = {}
+        sum_predictor_values = 0
+        for predictor in predictors:
+            if predictor in list(fml_list_dict[i]["INFO"].keys()):
+                temp_dicto[predictor] = fml_list_dict[i]["INFO"][predictor]
+                sum_predictor_values += int_val_dict[predictor][temp_dicto[predictor]]
+        temp_dicto["sum_predictor_values"] = sum_predictor_values
+        temp_dicto["CHROM"] = fml_list_dict[i]["CHROM"]
+        temp_dicto["POS"] = fml_list_dict[i]["POS"]
+        temp_dicto["REF"] = fml_list_dict[i]["REF"]
+        temp_dicto["ALT"] = fml_list_dict[i]["ALT"]
+
+        full_final.append(temp_dicto)
+    return full_final
 
     # END SOLUTION
 

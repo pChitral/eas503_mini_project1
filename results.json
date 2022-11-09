@@ -128,9 +128,8 @@
         },
         {
             "name": "test_pull_basic_and_predictor_fields (test_mini_project1.TestMiniProject1)",
-            "score": 0.0,
+            "score": 20,
             "max_score": 20,
-            "output": "Test Failed: [{'FATHMM_pred': 'T', 'LRT_pred': 'D', 'M[900 chars]'T'}] != None\n",
             "visibility": "visible",
             "number": "11.1"
         },
@@ -160,6 +159,6 @@
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "1.64",
-    "score": 155.0
+    "execution_time": "1.61",
+    "score": 175.0
 }
