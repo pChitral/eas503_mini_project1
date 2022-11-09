@@ -137,7 +137,7 @@
             "name": "test_pull_basic_and_predictor_fields_gzip (test_mini_project1.TestMiniProject1)",
             "score": 0.0,
             "max_score": 40,
-            "output": "Test Failed: [Errno 2] No such file or directory: 'mini_project1_gzip.json'\n",
+            "output": "Test Failed: Not a gzipped file (b'[]')\n",
             "visibility": "visible",
             "number": "12.1"
         },
@@ -159,6 +159,6 @@
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "2.20",
+    "execution_time": "1.67",
     "score": 175.0
 }

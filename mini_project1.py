@@ -315,10 +315,90 @@ def pull_basic_and_predictor_fields(filename):
 
 def pull_basic_and_predictor_fields_gzip(filename):
     # BEGIN SOLUTION
+    int_val_dict = {"FATHMM_pred": {"T": 0,
+                                    "D": 1},
+
+                    "LRT_pred": {"D": 1,
+                                 "N": 0,
+                                 "U": 0},
+                    "MetaLR_pred": {"T": 0,
+                                    "D": 1},
+                    "MetaSVM_pred": {"T": 0,
+                                     "D": 1},
+
+                    "MutationAssessor_pred": {"H": 1,
+                                              "N": 0,
+                                              "L": 0.25,
+                                              "M": 0.5},
+                    "MutationTaster_pred": {"D": 1,
+                                            "P": 0,
+                                            "N": 0,
+                                            "A": 1},
+                    "PROVEAN_pred":  {"D": 1,
+                                      "N": 0},
+                    "Polyphen2_HDIV_pred": {"D": 1,
+                                            "B": 0,
+                                            "P": 0.5},
+                    "Polyphen2_HVAR_pred":    {"D": 1,
+                                               "B": 0,
+                                               "P": 0.5},
+
+                    "SIFT_pred": {"D": 1,
+                                  "T": 0},
+                    "fathmm_MKL_coding_pred": {"D": 1,
+                                               "N": 0}
+
+                    }
+    predictors = [
+        'FATHMM_pred',
+        'LRT_pred',
+        'MetaLR_pred',
+        'MetaSVM_pred',
+        'MutationAssessor_pred',
+        'MutationTaster_pred',
+        'PROVEAN_pred',
+        'Polyphen2_HDIV_pred',
+        'Polyphen2_HVAR_pred',
+        'SIFT_pred',
+        'fathmm_MKL_coding_pred']
+    
     import gzip
+    list_of_dicts = []
     with gzip.open(filename, 'rt') as fp:
         for line in fp:
-            pass
+            temp_dict = {}
+            for line in fp:
+                if line.startswith("#"):
+                    continue
+            line_split = line.strip().split("\t")
+            info_field = line_split[7]
+            sum_predictor_values = 0
+            for ele in info_field.split(";"):
+                if "=" not in ele:
+                    continue
+                key, value = ele.split("=")
+                if key not in predictors:
+                    continue
+                if value ==".":
+                    continue
+                temp_dict[key] = value
+                sum_predictor_values += int_val_dict[key][value]
+                print(key, value)
+            if temp_dict:
+                temp_dict["sum_predictor_values"] = sum_predictor_values
+                temp_dict["CHROM"] = line_split[0]
+                temp_dict["POS"] = line_split[1]
+                temp_dict["REF"] = line_split[3]
+                temp_dict["ALT"] = line_split[4]
+                list_of_dicts.append(temp_dict)
+    import json
+    import gzip
+    dict_to_json = json.dumps(
+        list_of_dicts, sort_keys=True, indent=2)
+
+    with gzip.open('mini_project1_gzip.json', "w") as file:
+        file.write(dict_to_json)
+    # return list_of_dicts
     # END SOLUTION
 
 
