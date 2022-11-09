@@ -315,7 +315,10 @@ def pull_basic_and_predictor_fields(filename):
 
 def pull_basic_and_predictor_fields_gzip(filename):
     # BEGIN SOLUTION
-    pass
+    import gzip
+    with gzip.open(filename, 'rt') as fp:
+        for line in fp:
+            pass
     # END SOLUTION
 
 
